@@ -94,8 +94,15 @@
       push = {
         autoSetupRemote = true;
       };
+      pull.rebase = true;
+      github.user = "RianFuro";
+      core = {
+        editor = "nvim";
+        autocrlf = "input";
+      };
     };
-    ignores = [ "*.swp" ];
+    ignores = [ "*.swp" ".vscode/" ".zed/" ".dir-locals.el" ];
+    signing.key = null;
     signing.signByDefault = true;
   };
 
