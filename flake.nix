@@ -9,9 +9,10 @@
     nur.url = "github:nix-community/NUR";
     edgyarc-fr.url = "github:artsyfriedchicken/EdgyArc-fr";
     edgyarc-fr.flake = false;
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nur, catppuccin, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -37,7 +38,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

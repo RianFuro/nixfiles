@@ -10,6 +10,10 @@
   # manage.
   home.username = "rian";
   home.homeDirectory = "/home/rian";
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -104,6 +108,19 @@
     ignores = [ "*.swp" ".vscode/" ".zed/" ".dir-locals.el" ];
     signing.key = null;
     signing.signByDefault = true;
+  };
+
+  programs.starship.enable = true;
+  programs.fish.enable = true;
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      if [[ -z $NOFISH && $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
 
   programs.emacs.enable = true;
