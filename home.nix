@@ -123,6 +123,8 @@
     '';
   };
 
+  programs.kitty.enable = true;
+
   programs.emacs.enable = true;
   programs.neovim.enable = true;
   programs.neovim.plugins = [
