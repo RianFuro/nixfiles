@@ -86,6 +86,19 @@
     maxCacheTtl = 120;
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Florian Proksch";
+    userEmail = "florian.proksch@protonmail.com";
+    extraConfig = {
+      push = {
+        autoSetupRemote = true;
+      };
+    };
+    ignores = [ "*.swp" ];
+    signing.signByDefault = true;
+  };
+
   programs.emacs.enable = true;
   programs.neovim.enable = true;
   programs.neovim.plugins = [
