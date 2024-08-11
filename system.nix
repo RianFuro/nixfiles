@@ -53,6 +53,7 @@
   };
   
   services.udev.packages = [ pkgs.yubikey-personalization ];
+  #security.pam.u2f.enable = true;
   security.pam.services = {
     login.u2fAuth = true;
     doas.u2fAuth = true;
@@ -96,6 +97,10 @@
     git
     vim
     wget
+    bat
+    eza
+    ripgrep
+    zoxide
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

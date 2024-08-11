@@ -121,7 +121,12 @@
         exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
       fi
     '';
+    shellAliases = {
+      ls = "eza";
+    };
   };
+  programs.zoxide.enable = true;
+  programs.zoxide.enableFishIntegration = true;
 
   programs.kitty.enable = true;
 
