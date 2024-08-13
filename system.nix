@@ -110,6 +110,9 @@
     initialPassword = "asdfQWER12.";
     extraGroups = [ "sudo" "wheel" ];
   };
+  programs.direnv = {
+    enable = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -121,6 +124,7 @@
     eza
     ripgrep
     zoxide
+    direnv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
