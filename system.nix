@@ -59,7 +59,7 @@
   };
   
   services.udev.packages = [ pkgs.yubikey-personalization ];
-  #security.pam.u2f.enable = true;
+  security.pam.u2f.enable = true;
   security.pam.services = {
     login.u2fAuth = true;
     doas.u2fAuth = true;
@@ -106,7 +106,7 @@
   users.users.rian = {
     isNormalUser = true;
     initialPassword = "asdfQWER12.";
-    extraGroups = [ "sudo" "wheel" ];
+    extraGroups = [ "sudo" "wheel" "docker" ];
   };
   programs.direnv = {
     enable = true;
