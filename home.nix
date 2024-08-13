@@ -17,9 +17,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.zed-editor
-    pkgs.jetbrains-toolbox
+  home.packages = with pkgs; [
+    zed-editor
+    jetbrains-toolbox
+    teams-for-linux
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -185,6 +186,18 @@
       userChrome = ''
         @import "edgyarc-fr/userChrome.css";
       '';
+    };
+  };
+
+  programs.plasma = {
+    enable = true;
+    workspace = {
+      lookAndFeel = "org.kde.breezedark.desktop";
+    };
+    hotkeys.commands."launch-kitty" = {
+      name = "Launch Terminal";
+      key = "Meta+Return";
+      command = "kitty";
     };
   };
 

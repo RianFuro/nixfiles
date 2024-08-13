@@ -6,6 +6,12 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     nur.url = "github:nix-community/NUR";
     edgyarc-fr.url = "github:artsyfriedchicken/EdgyArc-fr";
     edgyarc-fr.flake = false;
@@ -38,7 +44,11 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+        modules = [ 
+	  inputs.plasma-manager.homeManagerModules.plasma-manager
+	  ./home.nix 
+	  catppuccin.homeManagerModules.catppuccin  
+	];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
